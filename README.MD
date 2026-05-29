@@ -7,10 +7,10 @@ El backend está desarrollado sobre **Node.js** utilizando el framework **Expres
 
 ---
 
-## 🚀 Instalación y Ejecución
+## Instalación y Ejecución
 
 ### Requisitos Previos
-* Tener instalado [Node.js](https://nodejs.org/) (versión LTS recomendada).
+* Tener instalado [Node.js](https://nodejs.org/).
 
 ### Pasos para iniciar el proyecto:
 1. **Clonar o extraer el proyecto** en tu directorio de preferencia.
