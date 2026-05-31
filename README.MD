@@ -1,4 +1,4 @@
-# Sistema de Gestión de Inventario: PixelVault Games 🎮
+# Sistema de Gestión de Inventario: PixelVault Games 
 
 ## 📝 Descripción del Proyecto
 Este proyecto es una aplicación web para la administración interna y control de stock de una tienda de videojuegos. Permite gestionar el catálogo de productos (Alta, Baja, Modificación y Consulta) y ofrece herramientas analíticas para conocer el estado comercial del inventario.
