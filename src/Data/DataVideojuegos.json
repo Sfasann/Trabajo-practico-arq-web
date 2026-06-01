@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "titulo": "Elden Ring",
+    "plataforma": "PS5",
+    "genero": "RPG",
+    "precio": 60,
+    "stock": 15
+  },
+  {
+    "id": 2,
+    "titulo": "The Legend of Zelda: TotK",
+    "plataforma": "Nintendo Switch",
+    "genero": "Aventura",
+    "precio": 70,
+    "stock": 8
+  },
+  {
+    "id": 3,
+    "titulo": "FIFA 26",
+    "plataforma": "Xbox Series X",
+    "genero": "Deportes",
+    "precio": 70,
+    "stock": 25
+  },
+  {
+    "id": 4,
+    "titulo": "Cyberpunk 2077",
+    "plataforma": "PC",
+    "genero": "RPG",
+    "precio": 40,
+    "stock": 10
+  },
+  {
+    "id": 5,
+    "titulo": "Spider-Man 2",
+    "plataforma": "PS5",
+    "genero": "Accion",
+    "precio": 70,
+    "stock": 5
+  }
+]

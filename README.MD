@@ -1,7 +1,7 @@
 # Sistema de Gestión de Inventario: PixelVault Games 🎮
 
 ## 📝 Descripción del Proyecto
-Este proyecto es una aplicación web para la administración interna y control de stock de una tienda de videojuegos. Permite gestionar el catálogo de productos (Alta, Baja, Modificación y Consulta) y ofrece herramientas analíticas para conocer el estado comercial del inventario.
+Este proyecto es una aplicación web para la administración interna y control de stock, y generacion de facturas de una tienda de videojuegos. Permite gestionar el catálogo de productos (Alta, Baja, Modificación y Consulta) y tambien la gestion de las facturas.
 
 El backend está desarrollado sobre **Node.js** utilizando el framework **Express**, aplicando patrones de arquitectura limpia (separación de rutas y controladores) y cumpliendo con el **Nivel 2 del Modelo de Madurez de Richardson** para el diseño de APIs RESTful. La persistencia de datos se maneja temporalmente en memoria mediante un set de datos por defecto (*Data Seed*).
 

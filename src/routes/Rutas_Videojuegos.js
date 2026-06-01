@@ -1,6 +1,6 @@
-const express = require('express');
+const express = require('express');//const define a una variable cuyo valor no puede ser reasignado
 const router = express.Router();
-const Controllers_Videojuegos = require('../controllers/Controllers_Videojuegos');
+const Controllers_Videojuegos = require('../Controllers/Controllers_Videojuegos');
 
 // Defino las ruta usando el controlador
 router.get('/', Controllers_Videojuegos.obtenerVideojuegos);
