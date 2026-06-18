@@ -1,9 +1,8 @@
 const fs = require('fs').promises;
 const path = require('path');
-
 const dataDir = path.join(__dirname, '..', 'Data');
 const videojuegosFile = path.join(dataDir, 'DataVideojuegos.json');
-const facturasFile = path.join(dataDir, 'Facturas.json');
+
 
 async function ensureDataFile(filePath) {//Primero verifico si el archivo existe
   try {
@@ -38,8 +37,14 @@ async function saveVideojuegos(videojuegos) {//Si quiero guardar los videojuegos
 
 async function createVideojuego(videojuegoData) { 
   const videojuegos = await getVideojuegos();
-  const nextId = videojuegos.length > 0 ? Math.max(...videojuegos.map(v => v.id)) + 1 : 1;
-  const nuevoVideojuego = { id: nextId, ...videojuegoData };
+  let randomId;
+  let idExists = true;
+  
+  while (idExists) {
+    randomId = Math.floor(Math.random() * 1000) + 1;
+    idExists = videojuegos.some(v => v.id === randomId);
+  }
+  const nuevoVideojuego = { id: randomId, ...videojuegoData };
   videojuegos.push(nuevoVideojuego);
   await saveVideojuegos(videojuegos);
   return nuevoVideojuego;
@@ -67,21 +72,9 @@ async function deleteVideojuego(id) {
   return true;
 }
 
-async function getFacturas() {
-  return await readJson(facturasFile);
-}
-
-async function saveFacturas(facturas) {
-  await writeJson(facturasFile, facturas);
-}
-
-async function createFactura(facturaData) {
-  const facturas = await getFacturas();
-  const nextId = facturas.length > 0 ? Math.max(...facturas.map(f => f.id)) + 1 : 1;
-  const nuevaFactura = { id: nextId, ...facturaData };
-  facturas.push(nuevaFactura);
-  await saveFacturas(facturas);
-  return nuevaFactura;
+async function getVideojuegoByTitulo(titulo) {
+  const videojuegos = await getVideojuegos();
+  return videojuegos.find(v => v.titulo === titulo) || null;
 }
 
 module.exports = {
@@ -89,7 +82,7 @@ module.exports = {
   createVideojuego,
   updateVideojuego,
   deleteVideojuego,
-  getFacturas,
-  saveFacturas,
-  createFactura
+  getVideojuegoByTitulo,
+  saveVideojuegos,
 };
+
