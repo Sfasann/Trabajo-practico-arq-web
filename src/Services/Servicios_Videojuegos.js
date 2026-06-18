@@ -71,7 +71,10 @@ async function deleteVideojuego(id) {
   await saveVideojuegos(videojuegos);
   return true;
 }
-
+async function getVideojuegoById(id) {
+  const videojuegos = await getVideojuegos();
+  return videojuegos.find(v => v.id === id) || null;
+}
 async function getVideojuegoByTitulo(titulo) {
   const videojuegos = await getVideojuegos();
   return videojuegos.find(v => v.titulo === titulo) || null;
@@ -82,6 +85,7 @@ module.exports = {
   createVideojuego,
   updateVideojuego,
   deleteVideojuego,
+  getVideojuegoById,
   getVideojuegoByTitulo,
   saveVideojuegos,
 };

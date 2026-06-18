@@ -80,6 +80,7 @@ const eliminarVideojuego = async (req, res) => {
 
 module.exports = {
   obtenerVideojuegos,
+  obtenerVideojuegosPorId,
   CrearVideojuego,
   actualizarVideojuego,
   eliminarVideojuego
