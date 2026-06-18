@@ -24,7 +24,7 @@
       await Promise.all([cargarVideojuegos(), cargarFacturas()]);
       renderOperationView();
     }
-
+//Defino la función para cargar los videojuegos desde el backend
     async function cargarVideojuegos() {
       try {
         const response = await fetch(apiEndpoints.videojuegos);// fetch es una funcion que permite hacer solicitudes HTTP desde el navegador. En este caso, se hace una solicitud GET a la ruta /api/videojuegos 
@@ -35,7 +35,7 @@
         mostrarMensaje(error.message, true);
       }
     }
-
+//Defino la función para cargar las facturas desde el backend
     async function cargarFacturas() {
       try {
         const response = await fetch(apiEndpoints.facturas);
@@ -171,7 +171,15 @@
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(nuevaFactura),
           });
-          if (!response.ok) throw new Error('Error al crear la factura');
+          if (!response.ok) {
+            let msg = `Error al crear la factura`;
+            try {
+              const data = await response.json();
+              if (data && data.message) msg = data.message;
+            } catch (e) {}
+            mostrarMensaje(msg, true);
+            return;
+          }
           await cargarFacturas();
           mostrarMensaje('Factura cargada correctamente.');
           renderCargaFactura();
@@ -412,7 +420,15 @@
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(cambios),
           });
-          if (!response.ok) throw new Error('Error al actualizar la factura');
+          if (!response.ok) {
+            let msg = `Error al actualizar la factura`;
+            try {
+              const data = await response.json();
+              if (data && data.message) msg = data.message;
+            } catch (e) {}
+            mostrarMensaje(msg, true);
+            return;
+          }
           await cargarFacturas();
           mostrarMensaje('Factura actualizada correctamente.');
           renderLista('actualizar');

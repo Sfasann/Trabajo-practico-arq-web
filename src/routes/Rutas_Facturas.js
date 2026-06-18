@@ -1,4 +1,4 @@
-const express = require('express');//const define a una variable cuyo valor no puede ser reasignado
+const express = require('express');
 const router = express.Router();
 const Controllers_Facturas = require('../Controllers/Controllers_Facturas');
 

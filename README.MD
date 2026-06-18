@@ -1,6 +1,9 @@
 # Sistema de Gestión de Videojuegos y Facturación 🎮
 
-Este proyecto es una aplicación web para la administración interna y control de stock, y generacion de facturas de una tienda de videojuegos. Permite gestionar el catálogo de productos (Alta, Baja, Modificación y Consulta) y tambien la gestion de las facturas(Tambien es posible dar de Alta, Baja, Modificación y Consulta).
+Este proyecto es una aplicación web para la administración interna y control de stock, y generacion de facturas de una tienda de videojuegos. Permite gestionar el catálogo de videojuegos (Alta, Baja, Modificación y Consulta) y tambien la gestion de las facturas(Tambien es posible dar de Alta, Baja, Modificación y Consulta), en donde para se verifica que para sumar juegos a la factura estos deben existir y tener stock.
+
+
+
 El backend está desarrollado sobre Node.js utilizando el framework Express, aplicando patrones de arquitectura limpia (separación de rutas y controladores) y cumpliendo con el Nivel 2 del Modelo de Madurez de Richardson para el diseño de APIs RESTful
 
 ---
@@ -53,9 +56,43 @@ La API interactúa mediante la transferencia de datos puros en formato JSON util
 Tener instalado Node.js previamente
 
 ### Pasos para Ejecutar
-1. Clonar el repositorio o descargar las carpetas del proyecto.
-2. Abrir la terminal en la raíz del proyecto e instalar las dependencias (si aplica):
-   ```bash
-npm install
-3. Abrir la terminal en la raíz del proyecto y ejecutar
-npm run dev
+1. Clonar el repositorio o descargar las carpetas del proyecto
+2. Si es necesario abrir la terminal raiz del proyecto e instalar las dependencias
+3. En la terminal, posicionarce con "cd" en la carpeta raíz del proyecto y ejecutarlo con 
+   npm run dev
+
+## Testear el frontend
+1. Abrir en el navegador la pagina http://localhost:3000/index.html
+2. Tener corriendo el servidor desde la terminal, y una vez en la pagina 
+   probar realizar la carga, baja, modificación y visualización de los recursos
+
+## Testear desde Postman
+1. Tener el servidor corriendo
+# Para GET Y GET ID
+* Es igual para facturas
+* GET http://localhost:3000/api/videojuegos/ o http://localhost:3000/api/facturas/
+* GETId http://localhost:3000/api/videojuegos/:id ---Ej: http://localhost:3000/api/videojuegos/3
+
+# Para POST
+* POST http://localhost:3000/api/videojuegos/ o http://localhost:3000/api/facturas/
+
+* En el body para los videojuegos por ej: {
+    "titulo": "FIFA 27",
+    "plataforma": "Xbox Series X",
+    "genero": "Deportes",
+    "precio": 70,
+    "stock": 23
+    }
+* En el body para las facturas por ej:{
+        "Fecha": "2021-06-17",
+        "Nombre_Cliente": "Martin p montilla",
+        "Suma_total": 50,
+        "lista de juegos": "Cyberpunk 2077, ELDEN RING"
+    } *nota: "lista de juegos" tiene que ser escrito en todo minuscula
+
+# Para PUT
+* PUT http://localhost:3000/api/videojuegos/:id o http://localhost:3000/api/facturas/:id
+* El body debe ser del mismo formato que post, modificando los valores que se desee
+
+# Para DELETE
+* DELETE http://localhost:3000/api/videojuegos/:id o http://localhost:3000/api/facturas/:id ----- Ej: http://localhost:3000/api/facturas/252

@@ -5,8 +5,9 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 const path = require('path');
 app.use(express.static(path.join(__dirname, '..', 'Frontend')));
+
 // --- CONEXIÓN DE RUTAS ---
-//Crea las rutas para videojuegos y facturas
+//Creo las rutas para videojuegos y facturas
 const videojuegosRoutes = require('./Routes/Rutas_Videojuegos');
 app.use('/api/videojuegos', videojuegosRoutes);
 const facturasRoutes = require('./Routes/Rutas_Facturas');
@@ -17,7 +18,7 @@ app.get('/', (req, res) => {
     res.send('Servidor de PixelVault Games funcionando con éxito 🎮');
 });
 
-// Iniciar el servidor
+// Inicia el servidor
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });

@@ -1,45 +1,24 @@
 [
   {
     "Numero_Factura": 1,
-    "Fecha": "2024-10-12",
+    "Fecha": "2024-10-14",
     "Nombre_Cliente": "Juan Pérez Carot",
-    "Lista_Juegos": "Elden Ring, The Legend of Zelda: TotK",
-    "Suma_total": 130,
-    "Lista de juegos": "Elden Ring, The Legend of Zelda: TotK"
-  },
-  {
-    "Numero_Factura": 2,
-    "Fecha": "2023-10-11",
-    "Nombre_Cliente": "Ana Martínez",
-    "Lista_Juegos": "FIFA 26, Cyberpunk 2077",
-    "Suma_total": 110
-  },
-  {
-    "Numero_Factura": 860,
-    "Fecha": "2023-12-1",
-    "Nombre_Cliente": "Fernandez Garcia",
-    "Lista_Juegos": "Spider-Man 2, FIFA 26",
-    "Suma_total": 120
-  },
-  {
-    "Numero_Factura": 870,
-    "Fecha": "2023-12-1",
-    "Nombre_Cliente": "Fernandez Garcia",
-    "Lista_Juegos": "Spider-Man 2, FIFA 26",
-    "Suma_total": 120
+    "Lista_Juegos": "ELDEN RING",
+    "Suma_total": 75,
+    "Lista de juegos": "ELDEN RING"
   },
   {
     "Numero_Factura": 252,
-    "Fecha": "2026-06-16",
-    "Nombre_Cliente": "Martin montilla",
-    "Suma_total": 40,
+    "Fecha": "2021-06-17",
+    "Nombre_Cliente": "pedro sanchez cruz",
+    "Suma_total": 50,
     "Lista de juegos": "FIFA 27"
   },
   {
     "Numero_Factura": 533,
     "Fecha": "2025-06-17",
-    "Nombre_Cliente": "Martin montilla",
-    "Suma_total": 40,
-    "Lista de juegos": "Cyberpunk 2077"
+    "Nombre_Cliente": "Martin p montilla",
+    "Suma_total": 50,
+    "Lista de juegos": "CYBERPUNK 2077, ELDEN RING"
   }
 ]

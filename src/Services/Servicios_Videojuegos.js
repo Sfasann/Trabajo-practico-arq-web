@@ -3,6 +3,9 @@ const path = require('path');
 const dataDir = path.join(__dirname, '..', 'Data');
 const videojuegosFile = path.join(dataDir, 'DataVideojuegos.json');
 
+function normalizeTitulo(titulo) {
+  return typeof titulo === 'string' ? titulo.trim().toUpperCase() : titulo;
+}
 
 async function ensureDataFile(filePath) {//Primero verifico si el archivo existe
   try {
@@ -35,6 +38,7 @@ async function saveVideojuegos(videojuegos) {//Si quiero guardar los videojuegos
   await writeJson(videojuegosFile, videojuegos);
 }
 
+//Defino la función para crear un videojuego en el archivo JSON
 async function createVideojuego(videojuegoData) { 
   const videojuegos = await getVideojuegos();
   let randomId;
@@ -44,23 +48,28 @@ async function createVideojuego(videojuegoData) {
     randomId = Math.floor(Math.random() * 1000) + 1;
     idExists = videojuegos.some(v => v.id === randomId);
   }
-  const nuevoVideojuego = { id: randomId, ...videojuegoData };
+  const titulo = normalizeTitulo(videojuegoData.titulo);
+  const nuevoVideojuego = { id: randomId, ...videojuegoData, titulo };
   videojuegos.push(nuevoVideojuego);
   await saveVideojuegos(videojuegos);
   return nuevoVideojuego;
 }
-
+//Defino la función para actualizar un videojuego
 async function updateVideojuego(id, videojuegoData) {
   const videojuegos = await getVideojuegos();
   const index = videojuegos.findIndex(v => v.id === id);
   if (index < 0) {
     return null;
   }
-  videojuegos[index] = { ...videojuegos[index], ...videojuegoData, id };
+  const updatedVideojuego = { ...videojuegos[index], ...videojuegoData, id };
+  if (videojuegoData.titulo !== undefined) {
+    updatedVideojuego.titulo = normalizeTitulo(videojuegoData.titulo);
+  }
+  videojuegos[index] = updatedVideojuego;
   await saveVideojuegos(videojuegos);
   return videojuegos[index];
 }
-
+//Defino la función para eliminar un videojuego
 async function deleteVideojuego(id) {
   const videojuegos = await getVideojuegos();
   const index = videojuegos.findIndex(v => v.id === id);
@@ -71,13 +80,16 @@ async function deleteVideojuego(id) {
   await saveVideojuegos(videojuegos);
   return true;
 }
+
+
 async function getVideojuegoById(id) {
   const videojuegos = await getVideojuegos();
   return videojuegos.find(v => v.id === id) || null;
 }
 async function getVideojuegoByTitulo(titulo) {
   const videojuegos = await getVideojuegos();
-  return videojuegos.find(v => v.titulo === titulo) || null;
+  const tituloNormalizado = normalizeTitulo(titulo);
+  return videojuegos.find(v => normalizeTitulo(v.titulo) === tituloNormalizado) || null;
 }
 
 module.exports = {

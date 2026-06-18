@@ -1,15 +1,15 @@
 [
   {
     "id": 1,
-    "titulo": "Elden Ring",
+    "titulo": "ELDEN RING",
     "plataforma": "PS5",
     "genero": "RPG",
-    "precio": 60,
-    "stock": 20
+    "precio": 68,
+    "stock": 18
   },
   {
     "id": 2,
-    "titulo": "The Legend of Zelda: TotK",
+    "titulo": "ZELDA",
     "plataforma": "Nintendo Switch",
     "genero": "Aventura",
     "precio": 70,
@@ -21,22 +21,38 @@
     "plataforma": "Xbox Series X",
     "genero": "Deportes",
     "precio": 70,
-    "stock": 24
+    "stock": 23
   },
   {
     "id": 4,
-    "titulo": "Cyberpunk 2077",
+    "titulo": "CYBERPUNK 2077",
     "plataforma": "PC",
     "genero": "RPG",
     "precio": 40,
-    "stock": 12
+    "stock": 11
   },
   {
     "id": 448,
-    "titulo": "Dino Crisis",
+    "titulo": "DINO CRISIS",
     "plataforma": "PC",
     "genero": "Acción",
     "precio": 70,
     "stock": 20
+  },
+  {
+    "id": 18,
+    "titulo": "LEGO",
+    "plataforma": "PC",
+    "genero": "aventura",
+    "precio": 30,
+    "stock": 0
+  },
+  {
+    "id": 772,
+    "titulo": "MINECRAFT",
+    "plataforma": "Xbox Series X",
+    "genero": "Aventura",
+    "precio": 25,
+    "stock": 40
   }
 ]
