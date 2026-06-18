@@ -40,7 +40,7 @@ const crearFactura = async (req, res) => {
     // Validar que se envíe al menos un juego
     const juegosData = juegos || lista_de_juegos || listaDeJuegos;
     if (!juegosData || (Array.isArray(juegosData) && juegosData.length === 0) || (typeof juegosData === 'string' && juegosData.trim() === '')) {
-      return res.status(400).json({ message: 'Debe incluir al menos un juego. Use el campo "juegos", "lista_de_juegos" o "lista de juegos"' });
+      return res.status(400).json({ message: 'Debe incluir al menos un juego.' });
     }
     const nuevaFactura = await createFactura(req.body);
     res.status(201).json(nuevaFactura);
