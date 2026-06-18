@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestión de Videojuegos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f1f5f9;
+      color: #1f2937;
+      margin: 0;
+      padding: 0;
+    }
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+    h1 {
+      margin-bottom: 8px;
+      color: #111827;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(15, 23, 42, 0.08);
+      padding: 24px;
+      margin-top: 20px;
+    }
+    .field-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    input,
+    select,
+    button {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid #cbd5e1;
+      font-size: 15px;
+    }
+    button {
+      cursor: pointer;
+      background: #2563eb;
+      border: none;
+      color: white;
+      transition: background 0.18s ease;
+    }
+    button:hover {
+      background: #1d4ed8;
+    }
+    button.secondary {
+      background: #64748b;
+    }
+    button.danger {
+      background: #dc2626;
+    }
+    .message {
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-radius: 10px;
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+    }
+    th,
+    td {
+      text-align: left;
+      padding: 12px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    th {
+      background: #f8fafc;
+      font-weight: 700;
+    }
+    .button-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- Título principal de la página -->
+    <h1>Gestión de Videojuegos y Facturas</h1>
+    <!-- Indicaciones para el usuario -->
+    <p>Selecciona el módulo y la operación que quieras realizar.</p>
+
+    <div class="card">
+      <!-- Selector de módulo y operación -->
+      <div class="field-group">
+        <div>
+          <label for="module-select">Módulo</label>
+          <select id="module-select">
+            <option value="videojuegos">Videojuegos</option>
+            <option value="facturas">Facturas</option>
+          </select>
+        </div>
+        <div>
+          <label for="operation-select">Operación</label>
+          <select id="operation-select">
+            <option value="carga">Carga</option>
+            <option value="actualizar">Actualización</option>
+            <option value="eliminar">Eliminación</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Contenedor dinámico: aquí se inserta el formulario o la tabla según la operación -->
+      <div id="operation-container"></div>
+
+      <!-- Mensajes al usuario (éxito o error) -->
+      <div id="message" class="message" style="display: none;"></div>
+    </div>
+  </div>
+
+  
+  <script src="appfront.js"></script>
+</body>
+</html>
