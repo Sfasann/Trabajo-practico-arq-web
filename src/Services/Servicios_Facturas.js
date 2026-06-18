@@ -2,8 +2,7 @@ const fs = require('fs').promises;
 const path = require('path');
 const { getVideojuegos, updateVideojuego, getVideojuegoByTitulo } = require('./Servicios_Videojuegos');
 const dataDir = path.join(__dirname, '..', 'Data');
-const facturasFile = path.join(dataDir, 'DataFacturas.json');//en estas primeras 5 lineas importo los módulos necesarios y defino la ruta al archivo JSON donde se almacenarán las facturas. 
-// También importo funciones del servicio de videojuegos para poder verificar y actualizar el stock de los juegos cuando se creen o modifiquen facturas.
+const facturasFile = path.join(dataDir, 'DataFacturas.json');
 
 function normalizeTitulo(titulo) {
   return typeof titulo === 'string' ? titulo.trim().toUpperCase() : titulo;
