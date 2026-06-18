@@ -2,7 +2,7 @@ const express = require('express');//const define a una variable cuyo valor no p
 const router = express.Router();
 const Controllers_Videojuegos = require('../Controllers/Controllers_Videojuegos');
 
-// Defino las ruta usando el controlador
+// Defino los Endpoints para videojuegos
 router.get('/', Controllers_Videojuegos.obtenerVideojuegos);
 router.get('/:id', Controllers_Videojuegos.obtenerVideojuegosPorId);
 router.post('/', Controllers_Videojuegos.CrearVideojuego);

@@ -2,6 +2,7 @@ const express = require('express');//const define a una variable cuyo valor no p
 const router = express.Router();
 const Controllers_Facturas = require('../Controllers/Controllers_Facturas');
 
+//Defino los Endpoints para las facturas
 router.get('/', Controllers_Facturas.obtenerFacturas);
 router.get('/:id', Controllers_Facturas.obtenerFacturaPorId);
 router.post('/', Controllers_Facturas.crearFactura);

@@ -5,7 +5,7 @@
     "plataforma": "PS5",
     "genero": "RPG",
     "precio": 60,
-    "stock": 15
+    "stock": 20
   },
   {
     "id": 2,
@@ -13,7 +13,7 @@
     "plataforma": "Nintendo Switch",
     "genero": "Aventura",
     "precio": 70,
-    "stock": 8
+    "stock": 19
   },
   {
     "id": 3,
@@ -29,7 +29,7 @@
     "plataforma": "PC",
     "genero": "RPG",
     "precio": 40,
-    "stock": 10
+    "stock": 12
   },
   {
     "id": 448,

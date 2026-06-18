@@ -1,10 +1,11 @@
 [
   {
     "Numero_Factura": 1,
-    "Fecha": "2023-10-12",
+    "Fecha": "2024-10-12",
     "Nombre_Cliente": "Juan Pérez Carot",
     "Lista_Juegos": "Elden Ring, The Legend of Zelda: TotK",
-    "Suma_total": 130
+    "Suma_total": 130,
+    "Lista de juegos": "Elden Ring, The Legend of Zelda: TotK"
   },
   {
     "Numero_Factura": 2,
@@ -36,14 +37,7 @@
   },
   {
     "Numero_Factura": 533,
-    "Fecha": "2026-06-15",
-    "Nombre_Cliente": "Martin montilla",
-    "Suma_total": 40,
-    "Lista de juegos": "Cyberpunk 2077"
-  },
-  {
-    "Numero_Factura": 346,
-    "Fecha": "2026-06-17",
+    "Fecha": "2025-06-17",
     "Nombre_Cliente": "Martin montilla",
     "Suma_total": 40,
     "Lista de juegos": "Cyberpunk 2077"

@@ -89,7 +89,7 @@ async function updateFactura(id, facturaData) {
   const index = facturas.findIndex(f => f.Numero_Factura === id);
   if (index < 0) return null;
 
-  // obtengo los juegos
+  // Obtengo los juegos
   const juegosAntiguosRaw = facturas[index]['Lista de juegos'] || '';
   const juegosAntiguos = juegosAntiguosRaw
     ? juegosAntiguosRaw.split(',').map(nombre => nombre.trim()).filter(Boolean)

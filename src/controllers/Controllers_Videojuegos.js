@@ -7,7 +7,7 @@ const {
   deleteVideojuego
 } = require('../Services/Servicios_Videojuegos');//aca importo las funciones del servicio para usarlas en el controlador
 
-// Obtener todos los Videojuegos (GET)
+// Defino la función para GET y GET por ID
 const obtenerVideojuegos = async (req, res) => {
   try {
     const videojuegos = await getVideojuegos();
@@ -28,7 +28,7 @@ const obtenerVideojuegosPorId = async (req, res) => {
     res.status(500).json({ message: 'Error al leer el videojuego', error: error.message });
   }
 };
-// Crear un nuevo Videojuego (POST)
+// Defino la función para crear un nuevo Videojuego (POST)
 const CrearVideojuego = async (req, res) => {
   try {
     const { titulo, plataforma, genero, precio, stock } = req.body;
@@ -42,7 +42,7 @@ const CrearVideojuego = async (req, res) => {
   }
 };
 
-// Actualizar un Videojuego (PUT)
+// Defino la función para actualizar un Videojuego (PUT)
 const actualizarVideojuego = async (req, res) => {
   try {
     const id = parseInt(req.params.id, 10);
@@ -62,7 +62,7 @@ const actualizarVideojuego = async (req, res) => {
   }
 };
 
-// Eliminar un Videojuego (DELETE)
+// Defino la función para eliminar un Videojuego (DELETE)
 const eliminarVideojuego = async (req, res) => {
   try {
     const id = parseInt(req.params.id, 10);
