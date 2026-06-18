@@ -70,7 +70,7 @@ async function createFactura(facturaData) {
     }
   }
   
-  const baseFactura = { ...facturaData };//aca es necesario crear una copia del objeto facturaData
+  const baseFactura = { ...facturaData };//aca creo una copia del objeto facturaData
   //para evitar modificar el objeto original al eliminar las propiedades de juegos
   //
   delete baseFactura.juegos;
@@ -89,7 +89,7 @@ async function updateFactura(id, facturaData) {
   const index = facturas.findIndex(f => f.Numero_Factura === id);
   if (index < 0) return null;
 
-  // Obtener juegos antiguos
+  // obtengo los juegos
   const juegosAntiguosRaw = facturas[index]['Lista de juegos'] || '';
   const juegosAntiguos = juegosAntiguosRaw
     ? juegosAntiguosRaw.split(',').map(nombre => nombre.trim()).filter(Boolean)
@@ -111,7 +111,7 @@ async function updateFactura(id, facturaData) {
       throw error;
     }
 
-    // Restaurar stock de juegos que se removieron
+    // Si se borra la factura porque se equivoco de juego, se restaura la cantidad de stock
     for (const nombreJuego of juegosAntiguos) {
       if (!juegosNuevos.includes(nombreJuego)) {
         const videojuego = await getVideojuegoByTitulo(nombreJuego);
@@ -121,7 +121,7 @@ async function updateFactura(id, facturaData) {
       }
     }
 
-    // Restar stock de juegos que se añadieron
+    // Se resta el stock de juegos que se añadieron
     for (const nombreJuego of juegosNuevos) {
       if (!juegosAntiguos.includes(nombreJuego)) {
         const videojuego = await getVideojuegoByTitulo(nombreJuego);
