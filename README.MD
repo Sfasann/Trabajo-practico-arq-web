@@ -1,51 +1,61 @@
-# Sistema de Gestión de Inventario: PixelVault Games 
+# Sistema de Gestión de Videojuegos y Facturación 🎮
 
-## 📝 Descripción del Proyecto
-Este proyecto es una aplicación web para la administración interna y control de stock, y generacion de facturas de una tienda de videojuegos. Permite gestionar el catálogo de productos (Alta, Baja, Modificación y Consulta) y tambien la gestion de las facturas.
-
-El backend está desarrollado sobre **Node.js** utilizando el framework **Express**, aplicando patrones de arquitectura limpia (separación de rutas y controladores) y cumpliendo con el **Nivel 2 del Modelo de Madurez de Richardson** para el diseño de APIs RESTful. La persistencia de datos se maneja temporalmente en memoria mediante un set de datos por defecto (*Data Seed*).
+Este proyecto es una aplicación web para la administración interna y control de stock, y generacion de facturas de una tienda de videojuegos. Permite gestionar el catálogo de productos (Alta, Baja, Modificación y Consulta) y tambien la gestion de las facturas(Tambien es posible dar de Alta, Baja, Modificación y Consulta).
+El backend está desarrollado sobre Node.js utilizando el framework Express, aplicando patrones de arquitectura limpia (separación de rutas y controladores) y cumpliendo con el Nivel 2 del Modelo de Madurez de Richardson para el diseño de APIs RESTful
 
 ---
 
-## Instalación y Ejecución
+## 🏛️ Arquitectura del Sistema
+
+### 💻 Backend (Node.js & Express)
+Organizado en capas independientes para cumplir con el principio de **Responsabilidad Única**:
+* **Servidor (`app.js`):** Punto de entrada de la aplicación. Configura los middlewares globales (`express.json()`), sirve los archivos estáticos del cliente y delega los prefijos de rutas globales.
+* **Capa de Rutas (`Routes/`):** Actúa como el enrutador del tráfico HTTP. Contiene los Endpoints
+* **Capa de Controladores (`Controllers/`):** Contiene la logica de negocio y la definición de los metodos HTTP.
+* **Capa de Servicios (`Services/`):** Capa encargada de la persistencia y reglas de negocio. 
+
+### 🌐 Frontend (HTML, JavaScript)
+* **`index.html`:** Contiene exclusivamente el esqueleto semántico de la aplicación, el diseño responsivo (CSS incrustado) y los selectores interactivos de módulos.
+* **`appfront.js`:** Archivo independiente que maneja la lógica del cliente. 
+---
+
+## 💾 Persistencia de Datos (Base de Datos Local)
+El sistema utiliza archivos planos en formato **JSON** localizados en la carpeta `Data/` para emular una base de datos:
+* `DataVideojuegos.json`: Almacena el catálogo de videojuegos con campos como id, título, plataforma, género, precio y stock.
+* `DataFacturas.json`: Almacena el histórico de ventas realizadas con su número de factura, fecha, cliente, ítems y monto total.
+
+
+---
+
+## Endpoints de la API (REST - Richardson Nivel 2)
+
+La API interactúa mediante la transferencia de datos puros en formato JSON utilizando de manera semántica los verbos HTTP y códigos de estado apropiados (`200`, `201`, `400`, `404`, `500`).
+
+### Módulo Videojuegos (`/api/videojuegos`)
+* `GET /api/videojuegos` - Obtiene la lista completa de videojuegos (`200 OK`).
+* `GET /api/videojuegos/:id` - Busca un videojuego específico por su ID único (`200 OK` o `404 Not Found`).
+* `POST /api/videojuegos` - Registra un nuevo videojuego generando un ID aleatorio automatizado (`201 Created` o `400 Bad Request`).
+* `PUT /api/videojuegos/:id` - Actualiza de manera completa un videojuego existente (`200 OK` o `404/400`).
+* `DELETE /api/videojuegos/:id` - Remueve físicamente un juego del registro (`200 OK` o `404 Not Found`).
+
+### Módulo Facturas (`/api/facturas`)
+* `GET /api/facturas` - Obtiene el historial completo de facturas emitidas.
+* `GET /api/facturas/:id` - Busca una factura específica mediante su número correlativo.
+* `POST /api/facturas` - Crea un nuevo registro de venta histórica (`201 Created`).
+* `PUT /api/facturas/:id` - Modifica datos de una factura emitida previamente.
+* `DELETE /api/facturas/:id` - Da de baja una factura del historial.
+
+---
+
+## Instalación y Despliegue 
 
 ### Requisitos Previos
-* Tener instalado [Node.js](https://nodejs.org/).
+Tener instalado Node.js previamente
 
-### Pasos para iniciar el proyecto:
-1. **Clonar o extraer el proyecto** en tu directorio de preferencia.
-2. **Abrir una terminal** posicionada en la carpeta raíz del proyecto (`Proyecto tp`).
-3. **Instalar las dependencias** declaradas ejecutando:
-```bash
-   npm install
-   npm run dev
-     ```
-   * **Modo Producción (Estándar):** Corre la aplicación de manera nativa con Node.
-```bash
-     npm start
-     ```
-
-El servidor iniciará por defecto en: `http://localhost:3000`
-
----
-
-## 📖 Documentación de la API (RESTful)
-
-La API interactúa con el recurso `productos` (videojuegos). Al iniciar, el sistema cuenta con un *Seed* de 5 videojuegos preestablecidos para facilitar el testing.
-
-### Endpoints Disponibles
-
-| Verbo HTTP | Endpoint | Descripción | Códigos de Estado Posibles |
-| :--- | :--- | :--- | :--- |
-| **`GET`** | `/api/productos` | Obtiene el listado completo de videojuegos en el inventario. | `200 OK` |
-| **`GET`** | `/api/productos/:id` | Obtiene los detalles de un videojuego específico según su ID. | `200 OK`<br>`404 Not Found` |
-| **`POST`** | `/api/productos` | Crea y añade un nuevo videojuego al catálogo. | `201 Created`<br>`400 Bad Request` (Datos inválidos) |
-| **`PUT`** | `/api/productos/:id` | Modifica los datos o el stock de un videojuego existente según su ID. | `200 OK`<br>`400 Bad Request`<br>`404 Not Found` |
-| **`DELETE`** | `/api/productos/:id` | Elimina físicamente un videojuego del inventario según su ID. | `200 OK` (o `204 No Content`) <br>`404 Not Found` |
-
----
-
-## 🛠️ Tecnologías Utilizadas
-* **Backend:** Node.js, Express.js
-* **Herramientas de desarrollo:** Nodemon
-* **Pruebas de Endpoints:** Postman
+### Pasos para Ejecutar
+1. Clonar el repositorio o descargar las carpetas del proyecto.
+2. Abrir la terminal en la raíz del proyecto e instalar las dependencias (si aplica):
+   ```bash
+npm install
+3. Abrir la terminal en la raíz del proyecto y ejecutar
+npm run dev
